@@ -1,0 +1,134 @@
+* {
+    /* otf-font-awesome is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* La barra principal completamente flotante */
+window#waybar {
+    background-color: transparent;
+    color: #bec8d1;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Base style para los módulos flotantes (Menos traslúcidos para contrastar con tu fondo) */
+#clock,
+#battery,
+#backlight,
+#network,
+#pulseaudio,
+#tray,
+#workspaces {
+    background-color: rgba(55, 59, 62, 0.9); /* #373b3e con 90% opacidad */
+    border-radius: 12px;
+    padding: 2px 12px;
+    margin: 4px 3px;
+    color: #bec8d1;
+    
+    /* Sombra sutil para despegar los módulos de un fondo del mismo color */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); */
+}
+
+/* --- SECCIÓN DE WORKSPACES ULTRA SMOOTH --- */
+
+#workspaces {
+    background-color: rgba(55, 59, 62, 0.95); /* Un toque más opaco para el centro */
+    padding: 0px 6px;
+}
+/* Círculos base (Inactivos/Persistentes) */
+#workspaces button,
+#workspaces button.persistent {
+    padding: 0px;
+    margin: 4px 4px;
+    background-color: transparent;
+
+    color: rgba(190, 200, 209, 0.4); /* Tu gris claro con opacidad baja */
+    font-size: 8px;                  
+    border-radius: 50%;
+
+    min-width: 16px;                 
+    min-height: 16px;
+
+    border: none;
+    box-shadow: 0 0 0 0px transparent;
+
+    /* Transición fluida usando sombras y color */
+    transition: color 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+#workspaces button.active,
+#workspaces button.focused {
+    background-color: #86cecb; /* El centro brilla en tu turquesa claro */
+    border: none;
+}
+/* Workspace urgente (Atención) */
+#workspaces button.urgent {
+    color: 
+#e12885; /* Tu magenta brillante */
+    box-shadow: 0 0 0 2px rgba(55, 59, 62, 0), 0 0 0 4px rgba(225, 40, 133, 0.85);
+}
+/* --- PERSONALIZACIÓN DE MÓDULOS INDIVIDUALES --- */
+
+/* El reloj destaca con el color turquesa */
+#clock {
+    background-color: rgba(55, 59, 62, 0.95);
+    color: #86cecb;
+}
+
+#pulseaudio:hover {
+    background-color: rgba(70, 75, 80, 0.95);
+}
+
+#pulseaudio.muted {
+    background-color: rgba(55, 59, 62, 0.8);
+    color: rgba(190, 200, 209, 0.4);
+}
+
+/* Red conectada usa un tono sutil del Teal oscuro */
+#network {
+    color: #86cecb;
+}
+
+#network.disconnected {
+    background-color: rgba(225, 40, 133, 0.8); /* Fondo Magenta si se desconecta */
+    color: #ffffff;
+}
+
+/* Batería cargando usa tu Teal oscuro */
+#battery.charging, 
+#battery.plugged {
+    background-color: rgba(19, 122, 127, 0.95); /* #137a7f */
+    color: #ffffff;
+}
+
+/* Animación crítica con tu color Magenta #e12885 */
+@keyframes blink {
+    to {
+        background-color: #e12885;
+        color: #ffffff;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: rgba(55, 59, 62, 0.95);
+    color: #e12885;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#tray {
+    background-color: rgba(55, 59, 62, 0.95);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    background-color: rgba(225, 40, 133, 0.9);
+}
