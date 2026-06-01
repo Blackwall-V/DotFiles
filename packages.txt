@@ -1,0 +1,32 @@
+# Shell
+cachyos-fish-config
+fish
+
+# Terminal
+kitty
+
+# Editor
+neovim
+
+# Fetch
+fastfetch
+
+# Hyprland ecosystem
+hyprland
+hypridle
+hyprlock
+hyprpaper
+hyprlauncher
+hyprpolkitagent
+hyprshot
+hyprshutdown
+hyprsunset
+
+# Bar
+waybar
+
+# Wallpaper
+waypaper
+
+# Portal
+xdg-desktop-portal-hyprland
